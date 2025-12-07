@@ -24,7 +24,7 @@ export default function NavBar({ mode = "light" }: { mode?: Mode }) {
 
   const isDark = mode === "dark";
 
-  const navBg = isDark ? "bg-[#0d0d0d]" : "bg-white";
+  const navBg = isDark ? "bg-[#0b0f19]" : "bg-white";
   const navText = isDark ? "text-white" : "text-gray-900";
   const navSubText = isDark ? "text-gray-300" : "text-gray-600";
   const btnBg = isDark ? "bg-yellow-500" : "bg-yellow-600";
@@ -43,31 +43,31 @@ export default function NavBar({ mode = "light" }: { mode?: Mode }) {
             sub={navSubText}
           />
           <NavItem
-            link="/about"
+            link="/#about"
             icon={<Info size={18} />}
             label="About"
             sub={navSubText}
           />
           <NavItem
-            link="/plans"
+            link="/#plans"
             icon={<Layers size={18} />}
             label="Plans"
             sub={navSubText}
           />
           <NavItem
-            link="/market"
+            link="/#market"
             icon={<LineChart size={18} />}
             label="Market"
             sub={navSubText}
           />
           <NavItem
-            link="/security"
+            link="/#security"
             icon={<Shield size={18} />}
             label="Security"
             sub={navSubText}
           />
           <NavItem
-            link="/faq"
+            link="/#faq"
             icon={<HelpCircle size={18} />}
             label="FAQ"
             sub={navSubText}

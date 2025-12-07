@@ -12,7 +12,7 @@ import React from "react";
 const Home = () => {
   return (
     <div>
-      <NavBar />
+      <NavBar mode="dark" />
       <HeroSection theme="dark" />
       <MarketSection theme="dark" />
       <AboutSection theme="dark" />

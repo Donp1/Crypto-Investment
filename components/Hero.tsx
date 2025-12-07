@@ -117,7 +117,7 @@ const HeroSection = ({ theme = "light" }: HeroSectionProps) => {
 
         {/* Hero Image */}
         <motion.div
-          className="flex-1 flex justify-center lg:justify-end"
+          className="flex-1 flex justify-center lg:justify-end mt-12 sm:mt-0"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}

@@ -94,20 +94,6 @@ const SecuritySection = ({ theme = "light" }: SecuritySectionProps) => {
           ))}
         </div>
 
-        {/* Security Illustration / Image */}
-        <motion.div
-          className="mt-20 flex justify-center"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <img
-            src="/images/security-crypto.png"
-            alt="Crypto Security"
-            className="w-full max-w-3xl rounded-xl shadow-2xl"
-          />
-        </motion.div>
-
         {/* CTA */}
         <motion.div
           className="mt-12 text-center"
