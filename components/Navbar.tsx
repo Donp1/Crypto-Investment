@@ -107,12 +107,16 @@ export default function NavBar({ mode = "light" }: { mode?: Mode }) {
             className={`${navBg} md:hidden overflow-hidden`}
           >
             <div className="flex flex-col px-6 pb-6 gap-4">
-              <MobileItem icon={<Home />} label="Home" />
-              <MobileItem icon={<Info />} label="About" />
-              <MobileItem icon={<Layers />} label="Plans" />
-              <MobileItem icon={<LineChart />} label="Market" />
-              <MobileItem icon={<Shield />} label="Security" />
-              <MobileItem icon={<HelpCircle />} label="FAQ" />
+              <MobileItem href="/" icon={<Home />} label="Home" />
+              <MobileItem href="/#about" icon={<Info />} label="About" />
+              <MobileItem href="/#plans" icon={<Layers />} label="Plans" />
+              <MobileItem href="/#market" icon={<LineChart />} label="Market" />
+              <MobileItem
+                href="/#security"
+                icon={<Shield />}
+                label="Security"
+              />
+              <MobileItem href="/#faq" icon={<HelpCircle />} label="FAQ" />
 
               <div className="mt-4 flex flex-col gap-3">
                 <Link
@@ -161,11 +165,22 @@ function NavItem({
 }
 
 /* --- Mobile Navigation Item --- */
-function MobileItem({ icon, label }: { icon: React.ReactNode; label: string }) {
+function MobileItem({
+  icon,
+  label,
+  href,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  href: string;
+}) {
   return (
-    <div className="flex items-center gap-3 py-2 border-b border-gray-700/20">
+    <Link
+      href={href}
+      className="flex items-center gap-3 py-2 border-b border-gray-700/20"
+    >
       {icon}
       <span className="text-lg">{label}</span>
-    </div>
+    </Link>
   );
 }

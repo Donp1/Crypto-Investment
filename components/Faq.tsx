@@ -36,7 +36,7 @@ const faqData: FAQItem[] = [
     question: "What payment methods do you accept?",
     answer:
       "We accept credit/debit cards, bank transfers, and cryptocurrencies. You can manage your preferred payment method in your account dashboard.",
-    image: "/images/payment-methods.png",
+    // image: "/images/payment-methods.png",
   },
   {
     question: "Do you offer customer support?",

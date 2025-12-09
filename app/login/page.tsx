@@ -5,11 +5,48 @@ import NavBar from "@/components/Navbar";
 import { motion } from "framer-motion";
 import { Lock, Mail } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { loginUser } from "@/utils";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      toast.error("Please enter both email and password");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const user = await loginUser(email, password);
+      toast.success(`Welcome back, ${user.name || "Investor"}! 🚀`);
+      router.push("/dashboard");
+
+      // Clear form
+      setEmail("");
+      setPassword("");
+    } catch (err: any) {
+      toast.error(err.message || "Login failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <NavBar mode="dark" />
+      <Toaster position="top-right" />
+
       <div className="min-h-screen w-full relative bg-black flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div
@@ -40,7 +77,7 @@ export default function LoginPage() {
           </h3>
 
           {/* Form */}
-          <form className="flex flex-col gap-5">
+          <form className="flex flex-col gap-5" onSubmit={handleLogin}>
             {/* Email */}
             <div className="flex items-center gap-3 bg-white/10 px-4 py-3 rounded-lg border border-white/20">
               <Mail className="text-yellow-400" size={20} />
@@ -48,6 +85,8 @@ export default function LoginPage() {
                 type="email"
                 placeholder="Email Address"
                 className="bg-transparent outline-none w-full text-gray-100 placeholder-gray-400"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -58,15 +97,21 @@ export default function LoginPage() {
                 type="password"
                 placeholder="Password"
                 className="bg-transparent outline-none w-full text-gray-100 placeholder-gray-400"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
             {/* Login Button */}
             <motion.button
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 mt-2 bg-gradient-to-br from-yellow-500 to-yellow-600 text-black font-bold rounded-lg shadow-lg hover:opacity-90 transition"
+              type="submit"
+              disabled={loading}
+              className={`w-full py-3 mt-2 bg-gradient-to-br from-yellow-500 to-yellow-600 text-black font-bold rounded-lg shadow-lg hover:opacity-90 transition ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
-              Login
+              {loading ? "Logging in..." : "Login"}
             </motion.button>
           </form>
 
