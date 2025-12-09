@@ -1,9 +1,9 @@
 export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
+import prisma from "@/library/prisma";
 import bcrypt from "bcryptjs";
-import { signToken } from "@/lib/jwt";
+import { signToken } from "@/library/jwt";
 import { z } from "zod";
 
 const registerSchema = z.object({

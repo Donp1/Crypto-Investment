@@ -2,8 +2,8 @@ export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import prisma from "@/lib/prisma";
-import { signToken } from "@/lib/jwt";
+import prisma from "@/library/prisma";
+import { signToken } from "@/library/jwt";
 import { z } from "zod";
 
 // Define login schema
